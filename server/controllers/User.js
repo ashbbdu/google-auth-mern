@@ -44,7 +44,7 @@ module.exports.signup = async (req, res) => {
           { expiresIn: "1h" }
         );
 
-        res.status(200).json({ result, token , msg :  "User created successfully" });
+        res.status(200).json({ result, token , msg :  "User created successfully" , success : true });
       })
       .catch((err) => {
         console.log(err , "err");
@@ -88,7 +88,7 @@ module.exports.signup = async (req, res) => {
         { expiresIn: "1h" }
       );
 
-      res.status(200).json({ result, token });
+      res.status(200).json({ result, token, message : "User created successfully" , success : true });
     } catch (err) {
       res.status(500).json({ message: "Something went wrong!" });
     }
@@ -126,7 +126,7 @@ module.exports.signin = async (req, res) => {
           { expiresIn: "1h" }
         );
 
-        res.status(200).json({ result: existingUser, token });
+        res.status(200).json({ result: existingUser, token , message : "User logged in successfully" , success :  true });
       })
       .catch((err) => {
         res.status(400).json({ message: "Invalid access token!" });
@@ -160,7 +160,7 @@ module.exports.signin = async (req, res) => {
         { expiresIn: "1h" }
       );
 
-      res.status(200).json({ result: existingUser, token });
+      res.status(200).json({ result: existingUser, token , message : "User logged in successfully" , success :  true });
     } catch (err) {
       res.status(500).json({ message: "Something went wrong!" });
     }
